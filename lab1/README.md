@@ -451,6 +451,37 @@ x = [q_N,\; q_T,\; q,\; H(4),\; H(8),\; p(1),\; p(3),\; p(4),\; p(8)]^T
 
 **Рис. 3.** Графики переменных состояния модели скважины при вариации обводнённости.
 
+<img width="687" height="386" alt="image" src="https://github.com/user-attachments/assets/81a7641b-0da4-4862-b7a8-ecc57c29595a" />
+
+<img width="695" height="393" alt="image" src="https://github.com/user-attachments/assets/a1becec5-6f86-4e39-95e3-327f509d88f7" />
+
+<img width="700" height="393" alt="image" src="https://github.com/user-attachments/assets/6c98fbe2-16a9-465b-b088-459bac189551" />
+
+<img width="686" height="393" alt="image" src="https://github.com/user-attachments/assets/34c29140-c93a-424e-9728-90a45d9043f9" />
+
+<img width="695" height="393" alt="image" src="https://github.com/user-attachments/assets/78ab1907-a170-4eb1-8882-19a262ddc053" />
+
+<img width="700" height="393" alt="image" src="https://github.com/user-attachments/assets/4e7de47e-7823-4f35-b52f-47ad3a3c61ce" />
+
+<img width="686" height="393" alt="image" src="https://github.com/user-attachments/assets/fadff69a-908e-47e9-a1b5-d022fb23dc2f" />
+
+<img width="695" height="393" alt="image" src="https://github.com/user-attachments/assets/0f8a7c29-3d53-4e90-aeee-8f695db53e98" />
+
+<img width="700" height="393" alt="image" src="https://github.com/user-attachments/assets/d343a90e-54db-462b-b931-75acb5ae96e6" />
+
+<img width="678" height="393" alt="image" src="https://github.com/user-attachments/assets/97283921-db65-406b-ad91-9f768bb0d262" />
+
+<img width="711" height="393" alt="image" src="https://github.com/user-attachments/assets/9a1c1dd0-332e-4323-b2f7-6f98c895fdf5" />
+
+<img width="700" height="393" alt="image" src="https://github.com/user-attachments/assets/92a1a8ac-bcb5-4b21-9901-3705cf8bc363" />
+
+<img width="678" height="393" alt="image" src="https://github.com/user-attachments/assets/e777d63d-2b8b-4eb6-b933-2defedb58bd7" />
+
+<img width="711" height="393" alt="image" src="https://github.com/user-attachments/assets/11738252-fc4d-44f0-95ef-fc05ecdbbad1" />
+
+<img width="700" height="393" alt="image" src="https://github.com/user-attachments/assets/ee9da948-989f-4b4c-a297-8f7022aed687" />
+
+
 ---
 
 ## 6. Выводы по заданию
