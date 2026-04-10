@@ -482,6 +482,56 @@ x = [q_N,\; q_T,\; q,\; H(4),\; H(8),\; p(1),\; p(3),\; p(4),\; p(8)]^T
 <img width="700" height="393" alt="image" src="https://github.com/user-attachments/assets/ee9da948-989f-4b4c-a297-8f7022aed687" />
 
 
+## Задача: расписать код
+
+В первую очередь мы импортируем библиотеки 
+
+import numpy as np - для расчетов
+import pandas as pd  -для вывова таблиц
+import matplotlib.pyplot as plt - для графиков
+
+#1. Исходные данные 
+
+
+Из таблицы 3 
+
+pL_base = 1.5 - давление 
+gamma_o = 0.0068 - удельный вес нефти
+gamma_w = 0.0109 - удельный вес воды
+rU = 2.0 - гидросопротивление устьевого штуцера
+
+Далее мы берем из таблицы 2 удельные гидросопротивления:
+
+rhoK = 0.0002 - нижней части обсадной колонны
+rhoN = 0.0008 - НКТ
+rhoT = 0.0004 - затрубья
+
+Параметры из таблицы 4:
+
+gamma_base = 0.0075 - удельный вес смеси
+beta_base = (gamma_base - gamma_o) / (gamma_w - gamma_o) - обводненность, формула берется из <img width="590" height="76" alt="image" src="https://github.com/user-attachments/assets/8923c74d-5d3e-4428-9e46-f24ca01b3ee2" /> - обводненность
+rR_base = 0.1 - гидросопротивление притока
+wR_base = 1 / rR_base <img width="537" height="51" alt="image" src="https://github.com/user-attachments/assets/5748604b-32a6-4c3b-b6e3-e2e30f940e73" /> - коэффициент продуктивности
+HR = 2500.0  
+HN = 1500.0  
+rGU_base = 12.0  
+
+pR_base = 20.8532 - пластовое давление из первой задлачи
+
+Значения из задания 2 
+
+pR0 = pL_base + gamma_base * HR
+pL0 = pR_base - gamma_base * HR
+beta0 = ((pR_base - pL_base) / HR - gamma_o) / (gamma_w - gamma_o)
+
+#2. Функция расчета модели по сути говоря просто калькулятор
+
+def calc_model(pL, pR, beta, rU, rGU, rR, HR, HN, rhoK, rhoN, rhoT, gamma_o, gamma_w): - создание самой функции
+
+  gamma = (1 - beta) * gamma_o + beta * gamma_w - расчет удельного веса
+
+  
+
 ---
 
 ## 6. Выводы по заданию
