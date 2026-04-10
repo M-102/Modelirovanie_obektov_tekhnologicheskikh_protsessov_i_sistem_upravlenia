@@ -530,6 +530,55 @@ def calc_model(pL, pR, beta, rU, rGU, rR, HR, HN, rhoK, rhoN, rhoT, gamma_o, gam
 
   gamma = (1 - beta) * gamma_o + beta * gamma_w - расчет удельного веса
 
+  Расчет гидросопротивления элементов подъёмника
+
+  rK = rhoK * (HR - HN)
+  rN = rhoN * HN
+  rT = rhoT * HN
+
+  <img width="366" height="87" alt="image" src="https://github.com/user-attachments/assets/01725f07-a8d5-460e-b8d4-f05d14dbc2c2" />
+
+  Расчет параметров матрицы 
+
+  r12 = rK + rR / gamma
+  r1 = r12 + rN + rU
+  r22 = r12 + rT + rGU
+
+  delta_HR = (pR - pL) / gamma - HR  //потенциал напора
+
+  1-ый случай 
+
+  if delta_HR > 0: - фонтанирует
+
+  A = np.array([[r1, r12],
+              [r12, r22]], dtype=float)
+  b = np.array([delta_HR, delta_HR], dtype=float)
+  qN, qT = np.linalg.solve(A, b)
+
+  Сумм расход
+  q = qN + qT
+
+  Подъёмник полностью заполнен жидкостью
+  H4 = 0.0
+  H8 = 0.0
+
+  2-ой случай 
+
+  qN = 0.0
+  qT = 0.0
+  q = 0.0
+  H4 = -delta_HR
+  H8 = -delta_HR
+
+  Расчет давления
+  
+  p1 = pR - rR * q
+  p3 = pR - gamma * (HR - HN) - (gamma * rK + rR) * q
+  p4 = pL + gamma * rGU * qT
+  p8 = pL + gamma * rU * qN
+<img width="542" height="218" alt="image" src="https://github.com/user-attachments/assets/58444ab2-a501-4a0f-bbf5-f8bafea9fb66" />
+
+  После всей процедуры мы возвращаем (return) все параметрами для дальнейшего создания таблицы
   
 
 ---
