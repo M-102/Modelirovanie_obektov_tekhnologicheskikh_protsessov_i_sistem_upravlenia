@@ -526,7 +526,8 @@ pR0 = pL_base + gamma_base * HR
 pL0 = pR_base - gamma_base * HR
 beta0 = ((pR_base - pL_base) / HR - gamma_o) / (gamma_w - gamma_o)
 
-#2. Функция расчета модели по сути говоря просто калькулятор
+<ins>2. Функция расчета модели по сути говоря просто калькулятор</ins>
+
 
 def calc_model(pL, pR, beta, rU, rGU, rR, HR, HN, rhoK, rhoN, rhoT, gamma_o, gamma_w): - создание самой функции
 
