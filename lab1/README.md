@@ -391,7 +391,7 @@ x = [q_N,\; q_T,\; q,\; H(4),\; H(8),\; p(1),\; p(3),\; p(4),\; p(8)]^T
 
 ---
 
-## 3. Примеры таблиц входных и выходных данных функции модели
+## 3. Таблицы входных и выходных данных функции модели
 
 ### Входные параметры модели
 
@@ -447,7 +447,7 @@ x = [q_N,\; q_T,\; q,\; H(4),\; H(8),\; p(1),\; p(3),\; p(4),\; p(8)]^T
 
 В отчёт необходимо вставить графики для каждого эксперимента.
 
-**Пример подписи рисунка:**
+** подпись рисунка:**
 
 **Рис. 3.** Графики переменных состояния модели скважины при вариации обводнённости.
 
@@ -576,11 +576,62 @@ def calc_model(pL, pR, beta, rU, rGU, rR, HR, HN, rhoK, rhoN, rhoT, gamma_o, gam
   p3 = pR - gamma * (HR - HN) - (gamma * rK + rR) * q
   p4 = pL + gamma * rGU * qT
   p8 = pL + gamma * rU * qN
-<img width="542" height="218" alt="image" src="https://github.com/user-attachments/assets/58444ab2-a501-4a0f-bbf5-f8bafea9fb66" />
+  <img width="542" height="218" alt="image" src="https://github.com/user-attachments/assets/58444ab2-a501-4a0f-bbf5-f8bafea9fb66" />
 
-  После всей процедуры мы возвращаем (return) все параметрами для дальнейшего создания таблицы
+  После всей процедуры мы возвращаем (return) результаты для дальнейшего создания таблицы
+
+  #3 Тут ничего интересного, просто перебор списка и формирование таблицы 
   
+  def run_experiment(var_name, values): - df (DataFrame)
 
+  #4 Чтобы определить пороговое значение использууется эта функция 
+
+  def find_stop_row(df):
+    stop = df[df["delta_HR"] <= 0]
+    if len(stop) == 0:
+        return None
+    return stop.iloc[0]
+
+   #4 Функция для построения графиков то что взято в кавычки, то и отображается
+
+   def plot_experiment(df, xcol, title, stop_row=None): - df это как раз наша табличка откуда берутся данные
+
+   plt.plot(df[xcol], df["qN"], ...)
+   plt.plot(df[xcol], df["qT"], ...) 
+   plt.plot(df[xcol], df["q"], ...)
+   plt.plot(df[xcol], df["H(8)"], ...)
+   plt.plot(df[xcol], df["H(4)"], ...)
+   plt.plot(df[xcol], df["p(1)"], ...)
+   plt.plot(df[xcol], df["p(3)"], ...)
+   plt.plot(df[xcol], df["p(4)"], ...)
+   plt.plot(df[xcol], df["p(8)"], ...)
+   
+  
+  #5 Диапозоны
+
+  beta_values = np.linspace(0.4 * beta_base, 1.0, 20)
+  pR_values   = np.linspace(0.7 * pR_base, 1.3 * pR_base, 20)
+  pL_values   = np.linspace(0.2 * pL_base, 2.0 * pL_base, 20)
+  wR_values   = np.linspace(0.6 * wR_base, 1.4 * wR_base, 20)
+  rGU_values  = np.linspace(0.1 * rGU_base, 100.0 * rGU_base, 20)
+
+  после задания диапозонов вызываем def run_experiment чтобы создать 5 таблиц с результатами вычислений
+
+  #6 Формирование итоговой таблицы и таблички с пороговыми значениями 
+
+  table8_beta = df_beta[[ ... ]].copy().round(4)
+
+  thresholds = pd.DataFrame([...]).round(4)
+
+  #7  И построение тоговых графиков
+
+  plot_experiment(df_beta, "beta", ...)
+  plot_experiment(df_pR, "pR", ...)
+  plot_experiment(df_pL, "pL", ...)
+  plot_experiment(df_wR, "wR", ...)
+  plot_experiment(df_rGU, "rGU", ...)
+
+  
 ---
 
 ## 6. Выводы по заданию
