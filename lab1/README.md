@@ -490,7 +490,8 @@ import numpy as np - для расчетов
 import pandas as pd  -для вывова таблиц
 import matplotlib.pyplot as plt - для графиков
 
-#1. Исходные данные 
+<ins> 1. Исходные данные </ins>
+
 
 
 Из таблицы 3 
@@ -518,7 +519,8 @@ rGU_base = 12.0
 
 pR_base = 20.8532 - пластовое давление из первой задлачи
 
-Значения из задания 2 
+<ins>Значения из задания 2 </ins>
+
 
 pR0 = pL_base + gamma_base * HR
 pL0 = pR_base - gamma_base * HR
@@ -580,7 +582,7 @@ def calc_model(pL, pR, beta, rU, rGU, rR, HR, HN, rhoK, rhoN, rhoT, gamma_o, gam
 
   После всей процедуры мы возвращаем (return) результаты для дальнейшего создания таблицы
 
-  #3 Тут ничего интересного, просто перебор списка и формирование таблицы 
+  <ins>3 Тут ничего интересного, просто перебор списка и формирование таблицы </ins>
   
   def run_experiment(var_name, values): - df (DataFrame)
 
@@ -592,7 +594,8 @@ def calc_model(pL, pR, beta, rU, rGU, rR, HR, HN, rhoK, rhoN, rhoT, gamma_o, gam
         return None
     return stop.iloc[0]
 
-   #4 Функция для построения графиков то что взято в кавычки, то и отображается
+   <ins>4 Функция для построения графиков то что взято в кавычки, то и отображается</ins>
+
 
    def plot_experiment(df, xcol, title, stop_row=None): - df это как раз наша табличка откуда берутся данные
 
@@ -607,7 +610,8 @@ def calc_model(pL, pR, beta, rU, rGU, rR, HR, HN, rhoK, rhoN, rhoT, gamma_o, gam
    plt.plot(df[xcol], df["p(8)"], ...)
    
   
-  #5 Диапозоны
+  <ins> 5 Диапозоны</ins>
+
 
   beta_values = np.linspace(0.4 * beta_base, 1.0, 20)
   pR_values   = np.linspace(0.7 * pR_base, 1.3 * pR_base, 20)
@@ -617,13 +621,15 @@ def calc_model(pL, pR, beta, rU, rGU, rR, HR, HN, rhoK, rhoN, rhoT, gamma_o, gam
 
   после задания диапозонов вызываем def run_experiment чтобы создать 5 таблиц с результатами вычислений
 
-  #6 Формирование итоговой таблицы и таблички с пороговыми значениями 
+  <ins> 6 Формирование итоговой таблицы и таблички с пороговыми значениями </ins>
+
 
   table8_beta = df_beta[[ ... ]].copy().round(4)
 
   thresholds = pd.DataFrame([...]).round(4)
 
-  #7  И построение тоговых графиков
+  </ins> 7  И построение тоговых графиков</ins>
+
 
   plot_experiment(df_beta, "beta", ...)
   plot_experiment(df_pR, "pR", ...)
