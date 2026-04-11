@@ -169,25 +169,10 @@ $$
 Для фонтанирующей скважины используется система:
 
 $$
-\left[
-\begin{array}{cc}
-r_1 & r_{12} \\
-r_{12} & r_{22}
-\end{array}
-\right]
-\left[
-\begin{array}{c}
-q_N \\
-q_T
-\end{array}
-\right]
-=
-\left[
-\begin{array}{c}
-1 \\
-1
-\end{array}
-\right]\Delta H_R
+\begin{cases}
+r_1 q_N + r_{12} q_T = \Delta H_R \\
+r_{21} q_N + r_{22} q_T = \Delta H_R
+\end{cases}
 $$
 
 Также выполняется:
