@@ -511,9 +511,14 @@ rhoT = 0.0004 - затрубья
 Параметры из таблицы 4:
 ```
 gamma_base = 0.0075 - удельный вес смеси
+```
 beta_base = (gamma_base - gamma_o) / (gamma_w - gamma_o) - обводненность, формула берется из <img width="590" height="76" alt="image" src="https://github.com/user-attachments/assets/8923c74d-5d3e-4428-9e46-f24ca01b3ee2" /> - обводненность
+```
 rR_base = 0.1 - гидросопротивление притока
-wR_base = 1 / rR_base <img width="537" height="51" alt="image" src="https://github.com/user-attachments/assets/5748604b-32a6-4c3b-b6e3-e2e30f940e73" /> - коэффициент продуктивности
+wR_base = 1 / rR_base 
+```
+<img width="537" height="51" alt="image" src="https://github.com/user-attachments/assets/5748604b-32a6-4c3b-b6e3-e2e30f940e73" /> - коэффициент продуктивности
+```
 HR = 2500.0  
 HN = 1500.0  
 rGU_base = 12.0  
@@ -539,11 +544,11 @@ def calc_model(pL, pR, beta, rU, rGU, rR, HR, HN, rhoK, rhoN, rhoT, gamma_o, gam
   rK = rhoK * (HR - HN)
   rN = rhoN * HN
   rT = rhoT * HN
-
+```
   <img width="366" height="87" alt="image" src="https://github.com/user-attachments/assets/01725f07-a8d5-460e-b8d4-f05d14dbc2c2" />
 
   Расчет параметров матрицы 
-
+```
   r12 = rK + rR / gamma
   r1 = r12 + rN + rU
   r22 = r12 + rT + rGU
@@ -586,7 +591,7 @@ def calc_model(pL, pR, beta, rU, rGU, rR, HR, HN, rhoK, rhoN, rhoT, gamma_o, gam
   После всей процедуры мы возвращаем (return) результаты для дальнейшего создания таблицы
 
   <ins>3 Тут ничего интересного, просто перебор списка и формирование таблицы </ins>
-  
+  ```
   def run_experiment(var_name, values): - df (DataFrame)
 
   #4 Чтобы определить пороговое значение использууется эта функция 
@@ -596,10 +601,10 @@ def calc_model(pL, pR, beta, rU, rGU, rR, HR, HN, rhoK, rhoN, rhoT, gamma_o, gam
     if len(stop) == 0:
         return None
     return stop.iloc[0]
-
+  ```
    <ins>4 Функция для построения графиков то что взято в кавычки, то и отображается</ins>
 
-
+```
    def plot_experiment(df, xcol, title, stop_row=None): - df это как раз наша табличка откуда берутся данные
 
    plt.plot(df[xcol], df["qN"], ...)
@@ -612,34 +617,34 @@ def calc_model(pL, pR, beta, rU, rGU, rR, HR, HN, rhoK, rhoN, rhoT, gamma_o, gam
    plt.plot(df[xcol], df["p(4)"], ...)
    plt.plot(df[xcol], df["p(8)"], ...)
    
-  
+ ``` 
   <ins> 5 Диапозоны</ins>
 
-
+```
   beta_values = np.linspace(0.4 * beta_base, 1.0, 20)
   pR_values   = np.linspace(0.7 * pR_base, 1.3 * pR_base, 20)
   pL_values   = np.linspace(0.2 * pL_base, 2.0 * pL_base, 20)
   wR_values   = np.linspace(0.6 * wR_base, 1.4 * wR_base, 20)
   rGU_values  = np.linspace(0.1 * rGU_base, 100.0 * rGU_base, 20)
-
+```
   после задания диапозонов вызываем def run_experiment чтобы создать 5 таблиц с результатами вычислений
 
   <ins> 6 Формирование итоговой таблицы и таблички с пороговыми значениями </ins>
 
-
+```
   table8_beta = df_beta[[ ... ]].copy().round(4)
 
   thresholds = pd.DataFrame([...]).round(4)
-
+```
   </ins> 7  И построение тоговых графиков</ins>
 
-
+```
   plot_experiment(df_beta, "beta", ...)
   plot_experiment(df_pR, "pR", ...)
   plot_experiment(df_pL, "pL", ...)
   plot_experiment(df_wR, "wR", ...)
   plot_experiment(df_rGU, "rGU", ...)
-
+```
   
 ---
 
